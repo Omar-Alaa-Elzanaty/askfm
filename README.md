@@ -1,5 +1,6 @@
 # askfm
 first oop project with c++.
+
 I try use some of i learned of oop
 basicly the program depend on id to can answer, you should show the questions that was sent to you as it will not appear automatically.
 
