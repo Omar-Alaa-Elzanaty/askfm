@@ -1,0 +1,6 @@
+﻿  ask.cpp
+H:\c++\ask project\askfm\askfm\ask.cpp(97,21): warning C4018: '<': signed/unsigned mismatch
+H:\c++\ask project\askfm\askfm\ask.cpp(110,22): warning C4018: '<': signed/unsigned mismatch
+H:\c++\ask project\askfm\askfm\ask.cpp(132,20): warning C4018: '<': signed/unsigned mismatch
+H:\c++\ask project\askfm\askfm\ask.cpp(134,22): warning C4018: '<': signed/unsigned mismatch
+  askfm.vcxproj -> H:\c++\ask project\askfm\Debug\askfm.exe
