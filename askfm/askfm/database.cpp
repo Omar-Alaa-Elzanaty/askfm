@@ -117,7 +117,6 @@ void database::note()
 {
 	/*there is problem in database file as find space in first line automatically
 	this happen when use ID function(which help to get last id)*/
-	cout << "test 1" << endl;
 }
 
 
