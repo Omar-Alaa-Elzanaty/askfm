@@ -53,7 +53,7 @@ void ask::sinup()
 {
 	int x;
 	cout << "Enter new user name doesn't used before: "; cin >> username;
-	cout << "Enter new name :  "; cin >> name;
+	cout << "Enter your first :  "; cin >> name;
 	cout << "Enter password not less than 4 digits: "; cin >> password;
 	cout << "Enter your Email: "; cin >> email;
 	cout << "Allow anonymous Questions?: ( 0 , 1 ) "; cin >> x;
