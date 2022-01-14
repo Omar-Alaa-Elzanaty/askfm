@@ -24,8 +24,12 @@ int main()
 					}
 					else {
 						if (x == 1)prog.print_to_me();
+						else if (x == 2)prog.print_from_me();
 						else if (x == 3)prog.answer();
+						else if (x == 4)prog.Delete();
 						else if (x == 5)prog.askquestion();
+						else if (x == 6)prog.system();
+						else if (x == 7)prog.feed();
 						else if (x == 8)break;
 						else if (x == 9) return 0;
 					}

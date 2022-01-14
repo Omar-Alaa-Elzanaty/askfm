@@ -75,12 +75,6 @@ void database::questionupload(string s, int from,int to, int ind)
 	file.close();
 }
 
-int database::ID()
-{
-	if (dat.size() == 0)return 0;
-	return dat[dat.size() - 1].d;
-}
-
 int database::questiondownload()
 {
 	ifstream file("questions.txt", ios::in);
@@ -111,6 +105,12 @@ void database::answerdownload()
 	while (file >> ob.from >>ob.to>> ob.in_id, getline(file, ob.s)) {
 		an.push_back(ob);
 	}
+}
+
+int database::ID()
+{
+	if (dat.size() == 0)return 0;
+	return dat[dat.size() - 1].d;
 }
 
 void database::note()

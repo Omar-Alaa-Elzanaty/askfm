@@ -1,6 +1,2 @@
 ﻿  ask.cpp
-  askfm.cpp
-  database.cpp
-H:\c++\github\askfm\askfm\askfm\database.cpp(94,23): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
   askfm.vcxproj -> H:\c++\github\askfm\askfm\x64\Debug\askfm.exe

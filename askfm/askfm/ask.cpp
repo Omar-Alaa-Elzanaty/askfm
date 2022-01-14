@@ -80,6 +80,7 @@ void ask::askquestion()
 			cin.ignore();
 			getline(cin, s);
 			questionupload(s, recent_id,identifi,in_id);
+			questiondownload();
 			in_id++;
 		}
 		else 
@@ -124,24 +125,86 @@ void ask::answer()
 	}
 }
 
-void ask::print_to_me()//questions i get
+const void ask::print_from_me()//questions i send and if some 
 {
-	bool ok = false;
 	/*for (int i = 0; i < que.size(); i++)cout << que[i].to << " "; cout << endl;
 	for (int i = 0; i < an.size(); i++)cout << an[i].from << " ";*/
 	for (int i = 0; i < que.size(); i++) {
+		if (que[i].from == recent_id) {
+			cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ")\n";
+			cout << "Question: " << que[i].s << endl;
+			for (int j = 0; j < an.size(); j++) {
+				if (recent_id == an[j].to) {
+					cout << "Answer: " << an[j].s << endl;
+					return;
+				}
+			}
+			cout << "NO Answer yet" <<endl;
+		}
+	}
+}
+
+const void ask::print_to_me()
+{
+	for (int i = 0; i < que.size(); i++) {
 		if (que[i].to == recent_id) {
+			cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ")\n";
+			cout << "Question: " << que[i].s << endl;
 			for (int j = 0; j < an.size(); j++) {
 				if (recent_id == an[j].from) {
-					cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ")\n";
-					cout <<"Question: "<< que[i].s << endl;
 					cout << "Answer: " << an[j].s << endl;
-					ok = true;
 				}
 			}
 		}
 	}
-	if (ok == false)cout << "NO Questions" << endl;
+}
+
+void ask::system()
+{
+	for (auto i : dat) {
+		cout << "ID: " << i.d << "        Name: " << i.name << endl;
+	}
+}
+
+void ask::Delete()
+{
+	int x;
+	cout << "Enter number of the question" << endl; cin >> x;
+	bool ok = true;
+	int i = 0;
+	for (; i < que.size(); i++) {
+		if (que[i].in_id == x) {
+			if (que[i].to != recent_id)
+				ok = 0;
+			break;
+		}
+	}
+	if (ok) {
+		que.erase(que.begin()+i);
+		for (int i = 0; i < an.size(); i++) {
+			if (an[i].in_id = x) {
+				an.erase(an.begin() + i);
+			}
+		}
+	}
+	else cout << "You can delete this question" << endl;
+}
+
+void ask::feed()
+{
+	bool ok = 0;
+	for (int i = 0; i < que.size(); i++) {
+		cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ") To user id(" << que[i].to << ")" << endl;
+		cout << que[i].s << endl;
+		for (int j = 0; j < an.size(); j++) {
+			if (que[i].in_id == an[j].in_id) {
+				cout << "Answer: " << an[j].s << endl;
+			}
+		}
+		ok = true;
+	}
+	if (!ok)cout << "There is no Questions";
+	cout << endl;
 }
 
 ask::~ask()

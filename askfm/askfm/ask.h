@@ -18,8 +18,12 @@ public:
 	bool login();
 	void menulog();
 	void askquestion();
-	void print_to_me();
+	const void print_from_me();
+	const void print_to_me();
+	void system();
+	void Delete();
 	void answer();
+	void feed();
 	~ask();
 };
 
