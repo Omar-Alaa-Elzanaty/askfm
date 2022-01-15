@@ -4,7 +4,9 @@ first oop project with c++.
 I try use some of topics of oop.
 
 basicly the program depend on id to can answer, you should show the questions that sent to you as it will not appear automatically.
-used file base system
+used file base system.
+**How to ask question ?** 
+you can do that by show id of all Users first from >list system user< 
 
 ## some of things i will pleasure if you do:
 1. you can tell me what precent of using opp in the project.
