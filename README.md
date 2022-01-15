@@ -7,6 +7,11 @@ basicly the program depend on id to can answer, you should show the questions th
 used file base system.
 
 
+**Keep warning!**
+
+Basicly there is no data so try to insert some of it then try.
+
+
 **How to ask question ?** 
 
 
