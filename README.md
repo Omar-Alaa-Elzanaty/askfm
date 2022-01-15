@@ -14,7 +14,7 @@ you can do that by show id of all Users first from *list system user* then choos
 
 **How to answer ?**
 
-steps Like as ask question except that you will chose *Answer Question*.
+steps Like ask question except that you will chose *Answer Question*.
 
 **NOTE**
 
