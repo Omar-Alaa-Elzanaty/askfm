@@ -5,11 +5,10 @@ using namespace std;
 
 int main()
 {
-	
+	int x;
+	string k;
+	ask prog;
 	while (true) {
-		int x;
-		string k;
-		ask prog;
 		prog.start();
 		cin >> k;
 		if (k == "1") {

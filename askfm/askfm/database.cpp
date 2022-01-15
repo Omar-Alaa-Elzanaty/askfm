@@ -90,6 +90,24 @@ void database::questiondownload()
 	file.close();
 }
 
+void database::questionupload()//overloading function
+{
+	ofstream file("questions.txt", ios::out | ios::trunc);
+	file.unsetf(ios::skipws);
+	for (int i = 0; i < que.size(); i++) {
+		file << que[i].from << " " << que[i].to << " " << que[i].in_id << " " << que[i].s << "\n";
+	}
+}
+
+void database::answerupload()
+{
+	ofstream file("Answer.txt", ios::out | ios::trunc);
+	file.unsetf(ios::skipws);
+	for (int i = 0; i < an.size(); i++) {
+		file << an[i].from << " " << an[i].to << " " << an[i].in_id << " " << an[i].s << "\n";
+	}
+}
+
 void database::answerupload(int x,int z,int y,string s,bool ok)
 {
 	if (ok==false) {

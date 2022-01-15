@@ -52,7 +52,7 @@ void ask::menulog()
 void ask::sinup()
 {
 	int x;
-	cout << "Enter new user name doesn't used before: "; cin >> username;
+	cout << "Enter new username doesn't used before: "; cin >> username;
 	cout << "Enter your first :  "; cin >> name;
 	cout << "Enter password not less than 4 digits: "; cin >> password;
 	cout << "Enter your Email: "; cin >> email;
@@ -72,8 +72,12 @@ void ask::sinup()
 void ask::askquestion()
 {
 	cout << "Enter User id or -1 to cancel: "; cin >> identifi;
-	cout << endl;
+	//cout << endl;
 	if (identifi != -1) {
+		if (identifi == recent_id) {
+			cout << "can't ask your self" << endl;
+			return;
+		}
 		string s;
 		if (askcheck(identifi)) {
 			cout << "Enter question text: ";
@@ -167,7 +171,7 @@ void ask::system()
 void ask::Delete()
 {
 	int x;
-	cout << "Enter number of the question" << endl; cin >> x;
+	cout << "Enter number of the question: "; cin >> x;
 	bool ok = true;
 	int i = 0;
 	for (; i < que.size(); i++) {
@@ -179,10 +183,11 @@ void ask::Delete()
 	}
 	if (ok) {
 		que.erase(que.begin()+i);
-
+		questionupload();
 		for (int i = 0; i < an.size(); i++) {
 			if (an[i].in_id = x) {
 				an.erase(an.begin() + i);
+				answerupload();
 			}
 		}
 	}

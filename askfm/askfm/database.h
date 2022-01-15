@@ -29,8 +29,8 @@ public:
 	void answerdownload();
 	void questionupload(string,int,int,int);
 	void questiondownload();
-	//void questionupload();
-	//void answerdownload();
+	void questionupload();
+	void answerupload();
 	int ID();
 	void note();
 };
