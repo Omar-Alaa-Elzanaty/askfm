@@ -69,14 +69,17 @@ bool database::askcheck(int id)
 
 void database::questionupload(string s, int from,int to, int ind)
 {
+	ob.from = from, ob.to = to, ob.in_id = ind, ob.s = s;
+	que.push_back(ob);
 	ofstream file("questions.txt", ios::out | ios::app);
 	file.unsetf(ios::skipws);
 	file << from << " "<<to<<" " << ind << " " << s << "\n";
 	file.close();
 }
 
-int database::questiondownload()
+void database::questiondownload()
 {
+	que.clear();
 	ifstream file("questions.txt", ios::in);
 	//file.unsetf(ios::skipws);
 	while (file >> ob.from >>ob.to>>ob.in_id,getline(file, ob.s)) {
@@ -85,26 +88,30 @@ int database::questiondownload()
 	}
 	//for (int i = 0; i < que.size();i++)cout << que[i].from<<" "<<que[i].in_id<<" "<<que[i].s << endl;
 	file.close();
-	return que.size() + 1;
 }
 
-void database::answerupload(int x,int z,int y,string s)
+void database::answerupload(int x,int z,int y,string s,bool ok)
 {
-	ob.from = x; ob.to = z; ob.in_id = y; ob.s = s;
-	an.push_back(ob);
-	ofstream file("Answer.txt", ios::out|ios::trunc);
-	for (int i = 0; i < an.size(); i++) {
-		file << an[i].from << " " <<an[i].to<<" "<< an[i].in_id << " " << an[i].s << "\n";
+	if (ok==false) {
+		ob.from = x; ob.to = z; ob.in_id = y; ob.s = s;
+		an.push_back(ob);
 	}
-	an.clear();
+	ofstream file("Answer.txt", ios::out|ios::trunc);
+	file.unsetf(ios::skipws);
+	for (int i = 0; i < an.size(); i++) {
+		file << x << " " << z << " " << y << " " << s << "\n";
+	}
+	file.close();
 }
 
 void database::answerdownload()
 {
+	an.clear();
 	ifstream file("Answer.txt", ios::in);
 	while (file >> ob.from >>ob.to>> ob.in_id, getline(file, ob.s)) {
 		an.push_back(ob);
 	}
+	file.close();
 }
 
 int database::ID()

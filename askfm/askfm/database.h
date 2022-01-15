@@ -25,10 +25,12 @@ public:
 	int checklogin(string user,int pass);
 	bool checksign(string,string,int,string,bool,int);
 	bool askcheck(int);
-	void answerupload(int,int,int,string);
+	void answerupload(int,int,int,string,bool);
 	void answerdownload();
 	void questionupload(string,int,int,int);
-	int questiondownload();
+	void questiondownload();
+	//void questionupload();
+	//void answerdownload();
 	int ID();
 	void note();
 };

@@ -26,7 +26,7 @@ bool ask::login()
 	cout << "Enter User name & password : "; cin >> username >> password;
 	recent_id = checklogin(username, password);
 	if (recent_id) {
-		in_id=questiondownload();
+		questiondownload();
 		answerdownload();
 		return true;
 	}
@@ -80,7 +80,7 @@ void ask::askquestion()
 			cin.ignore();
 			getline(cin, s);
 			questionupload(s, recent_id,identifi,in_id);
-			questiondownload();
+			//questiondownload();
 			in_id++;
 		}
 		else 
@@ -91,37 +91,35 @@ void ask::askquestion()
 void ask::answer()
 {
 	string ans;
-	int sender,quenum,pos,x;
-	bool ok = false;
-	cout << "Enter Question id or -1 to cancel: "; cin >> sender;
-	if (sender != -1) {
+	int queid,x;
+	bool ok = false,change=false;
+	cout << "Enter Question id or -1 to cancel: "; cin >> queid;
+	if (queid != -1) {
 		for (int i = 0; i < que.size(); i++) {
-			if (sender == que[i].from) {
-				quenum = que[i].in_id;
-				pos = i;
+			if (queid == que[i].in_id&&recent_id!=que[i].from) {
+				cout << "question Id (" << queid << ") from user id(" << que[i].from << ")" << endl;
+				cout << que[i].s << endl;
+				cout << "Answer: "; cin.ignore();
+				getline(cin, ans);
+				for (int i = 0; i < an.size(); i++) {
+					if (queid == an[i].in_id) {
+						cout << "keep warning this question maybe answered before press 1 to confirm or 0 to cancel: ";
+						cin >> x;
+						if (x) {
+							an[i].s = ans;//from to idque ans
+							change = 1;
+						}
+						else return;
+					}
+				}
+				answerupload(recent_id, que[i].from, que[i].in_id, ans,change);
+				//answerdownload();
 				ok = true;
 				break;
 			}
 		}
-		if (ok) {
-			cout << "question Id (" << quenum << ") from user id(" << sender << ")" << endl;
-			cout << que[pos].s << endl;
-			cout << "Answer: "; cin.ignore();
-			getline(cin, ans);
-			for (int i = 0; i < an.size(); i++) {
-				if (recent_id == an[i].from && quenum == an[i].in_id, sender == an[i].to) {
-					cout << "keep warning this question maybe answered before press 1 to confirm or 0 to cancel: ";
-					cin >> x;
-					if (x) {
-						answerupload(recent_id, sender, quenum, ans);//from to idque ans
-					}
-					else return;
-				}
-			}
-			answerupload(recent_id, sender, quenum, ans);
-			answerdownload();
-		}
-		else cout << "no user with this id ask Before" << endl;
+		if (!ok)
+			cout << "no user with this id ask Before" << endl;
 	}
 }
 
@@ -181,13 +179,14 @@ void ask::Delete()
 	}
 	if (ok) {
 		que.erase(que.begin()+i);
+
 		for (int i = 0; i < an.size(); i++) {
 			if (an[i].in_id = x) {
 				an.erase(an.begin() + i);
 			}
 		}
 	}
-	else cout << "You can delete this question" << endl;
+	else cout << "You can delete this question or may be this number is not found" << endl;
 }
 
 void ask::feed()
@@ -212,7 +211,7 @@ ask::~ask()
 	cout << "------------------------------------------------------------------------------------------------------------------------" << endl;
 	cout << "                                                Hope to be enjoyed" << endl;
 	cout << "AskFm made by Omar Alaa" << endl;
-	cout << "Student At Sohag University";
+	cout << "Student At Sohag University" << endl<<endl;
 }
 
 
