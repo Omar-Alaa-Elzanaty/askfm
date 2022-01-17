@@ -24,7 +24,9 @@ steps Like ask question except that you will chose *Answer Question*.
 **NOTE**
 
 -The project still need alot of exceptions handling. (sorry for that)
+
 -Username consist from one string with no spaces.
+
 -Try system from diff. account to can understand how system work.
 
 ## some of things i will pleasure if you do:
