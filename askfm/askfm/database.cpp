@@ -111,7 +111,7 @@ void database::questionupload()//overloading function
 	}
 	file.unsetf(ios::skipws);
 	for (int i = 0; i < que.size(); i++) {
-		file << que[i].from << " " << que[i].to << " " << que[i].in_id << " " << que[i].s << "\n";
+		file << que[i].from << " " << que[i].to << " " << que[i].in_id<<" "<<que[i].ano << " " << que[i].s << "\n";
 	}
 }
 

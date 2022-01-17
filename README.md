@@ -23,9 +23,13 @@ steps Like ask question except that you will chose *Answer Question*.
 
 **NOTE**
 
--The project still need alot of exceptions handling. (sorry for that)
--Username consist from one string with no spaces.
--Try system from diff. account to can understand how system work.
+- The project still need alot of exceptions handling. (sorry for that)
+
+- Username consist from one string with no spaces.
+
+- Try system from diff. account to can understand how system work.
+
+- password consist from digits only (int) 
 
 ## some of things i will pleasure if you do:
 1. you can tell me what precent of using opp in the project.
