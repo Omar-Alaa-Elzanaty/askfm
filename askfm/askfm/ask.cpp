@@ -157,7 +157,7 @@ const void ask::print_to_me()
 	}
 	for (int i = 0; i < que.size(); i++) {
 		if (que[i].to == recent_id) {
-			if(ano)
+			if(!ano)
 				cout<< "Question Id (" << que[i].in_id << ") from user !AQ "<< ")\n";
 			else cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ")\n";
 			cout << "Question: " << que[i].s << endl;
