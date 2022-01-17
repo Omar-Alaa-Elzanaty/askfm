@@ -78,12 +78,14 @@ void ask::askquestion()
 			cout << "can't ask your self" << endl;
 			return;
 		}
-		string s;
-		if (askcheck(identifi)) {
+		string s; cout << "Anonymous question press 1 or 0: ";
+		int x;
+		cin >> x;
+		if (askcheck(identifi,x)) {
 			cout << "Enter question text: ";
 			cin.ignore();
 			getline(cin, s);
-			questionupload(s, recent_id,identifi,in_id);
+			questionupload(s, recent_id,identifi,in_id,x);
 			//questiondownload();
 			in_id++;
 		}
@@ -141,23 +143,23 @@ const void ask::print_from_me()//questions i send and if some
 					return;
 				}
 			}
-			cout << "NO Answer yet" <<endl;
+			cout << "Answer: NO Answer yet" <<endl;
 		}
 	}
 }
 
 const void ask::print_to_me()
 {
-	bool ok=false,ano;
+	bool ok=false,z=true;
 	for (int i = 0; i < dat.size(); i++) {
 		if (dat[i].d == recent_id) {
-			ano = dat[i].anonymous;
+			z = dat[i].anonymous;
 			break;
 		}
 	}
 	for (int i = 0; i < que.size(); i++) {
 		if (que[i].to == recent_id) {
-			if(ano)
+			if(z==1&&que[i].ano==1)
 				cout<< "Question Id (" << que[i].in_id << ") from user !AQ "<< ")\n";
 			else cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ")\n";
 			cout << "Question: " << que[i].s << endl;

@@ -12,6 +12,7 @@ protected:
 	struct dq {
 		int from,to, in_id;
 		string s;
+		int ano;
 	};
 	vector<data>dat;
 	vector<dq>que;
@@ -24,10 +25,10 @@ public:
 	void datadownload();
 	int checklogin(string user,int pass);
 	bool checksign(string,string,int,string,bool,int);
-	bool askcheck(int);
+	bool askcheck(int,int);
 	void answerupload(int,int,int,string,bool);
 	void answerdownload();
-	void questionupload(string,int,int,int);
+	void questionupload(string,int,int,int,int);
 	void questiondownload();
 	void questionupload();
 	void answerupload();

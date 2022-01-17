@@ -58,11 +58,11 @@ bool database::checksign(string user, string mail,int pass,string nam,bool an,in
 	return true;
 }
 
-bool database::askcheck(int id)
+bool database::askcheck(int id,int x)
 {
 	for (int i = 0; i < dat.size(); i++) {
 		if (id == dat[i].d) {
-			if (dat[i].anonymous == 0) {
+			if (dat[i].anonymous == 0&&x==1) {
 				cout << "Note: Anonymous questions are not allowed for this user" << endl;
 			}
 			return true;
@@ -71,9 +71,9 @@ bool database::askcheck(int id)
 	return false;
 }
 
-void database::questionupload(string s, int from,int to, int ind)
+void database::questionupload(string s, int from,int to, int ind,int x)
 {
-	ob.from = from, ob.to = to, ob.in_id = ind, ob.s = s;
+	ob.from = from, ob.to = to, ob.in_id = ind, ob.s = s,ob.ano=x;
 	que.push_back(ob);
 	ofstream file("questions.txt", ios::out | ios::app);
 	if (file.fail()) {
@@ -81,7 +81,7 @@ void database::questionupload(string s, int from,int to, int ind)
 		return;
 	}
 	file.unsetf(ios::skipws);
-	file << from << " "<<to<<" " << ind << " " << s << "\n";
+	file << from << " "<<to<<" " << ind <<" "<< ob.ano << " " << s << "\n";
 	file.close();
 }
 
@@ -94,7 +94,7 @@ void database::questiondownload()
 		return;
 	}
 	//file.unsetf(ios::skipws);
-	while (file >> ob.from >>ob.to>>ob.in_id,getline(file, ob.s)) {
+	while (file >> ob.from >>ob.to>>ob.in_id>>ob.ano,getline(file, ob.s)) {
 	//	cout << ob.id << " " << ob.in_id << " " << ob.s << endl;
 		que.push_back(ob);
 	}
@@ -107,6 +107,7 @@ void database::questionupload()//overloading function
 	ofstream file("questions.txt", ios::out | ios::trunc);
 	if (file.fail()) {
 		cout << "faild download questino data" << endl;
+		return;
 	}
 	file.unsetf(ios::skipws);
 	for (int i = 0; i < que.size(); i++) {
@@ -119,6 +120,7 @@ void database::answerupload()
 	ofstream file("Answer.txt", ios::out | ios::trunc);
 	if (file.fail()) {
 		cout << "faild to upload data of answers" << endl;
+		return;
 	}
 	file.unsetf(ios::skipws);
 	for (int i = 0; i < an.size(); i++) {
@@ -135,6 +137,7 @@ void database::answerupload(int x,int z,int y,string s,bool ok)
 	ofstream file("Answer.txt", ios::out|ios::trunc);
 	if (file.fail()) {
 		cout << "faild upload answer data" << endl;
+		return;
 	}
 	file.unsetf(ios::skipws);
 	for (int i = 0; i < an.size(); i++) {
@@ -149,6 +152,7 @@ void database::answerdownload()
 	ifstream file("Answer.txt", ios::in);
 	if (file.fail()) {
 		cout << "faild download answer data" << endl;
+		return;
 	}
 	while (file >> ob.from >>ob.to>> ob.in_id, getline(file, ob.s)) {
 		an.push_back(ob);
