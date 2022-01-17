@@ -148,17 +148,28 @@ const void ask::print_from_me()//questions i send and if some
 
 const void ask::print_to_me()
 {
+	bool ok=false,ano;
+	for (int i = 0; i < dat.size(); i++) {
+		if (dat[i].d == recent_id) {
+			ano = dat[i].anonymous;
+			break;
+		}
+	}
 	for (int i = 0; i < que.size(); i++) {
 		if (que[i].to == recent_id) {
-			cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ")\n";
+			if(ano)
+				cout<< "Question Id (" << que[i].in_id << ") from user !AQ "<< ")\n";
+			else cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ")\n";
 			cout << "Question: " << que[i].s << endl;
 			for (int j = 0; j < an.size(); j++) {
 				if (recent_id == an[j].from) {
 					cout << "Answer: " << an[j].s << endl;
 				}
 			}
+			ok = true;
 		}
 	}
+	if (!ok)cout << "There are no Questions." << endl;
 }
 
 void ask::system()
