@@ -204,7 +204,7 @@ void ask::Delete()
 			}
 		}
 	}
-	else cout << "You can delete this question or may be this number is not found" << endl;
+	else cout << "You can't delete this question or may be this number is not found" << endl;
 }
 
 void ask::feed()
@@ -212,7 +212,7 @@ void ask::feed()
 	bool ok = 0;
 	for (int i = 0; i < que.size(); i++) {
 		cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ") To user id(" << que[i].to << ")" << endl;
-		cout << que[i].s << endl;
+		cout <<"Question: "<< que[i].s << endl;
 		for (int j = 0; j < an.size(); j++) {
 			if (que[i].in_id == an[j].in_id) {
 				cout << "Answer: " << an[j].s << endl;

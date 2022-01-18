@@ -81,7 +81,7 @@ void database::questionupload(string s, int from,int to, int ind,int x)
 		return;
 	}
 	file.unsetf(ios::skipws);
-	file << from << " "<<to<<" " << ind <<" "<< ob.ano << " " << s << "\n";
+	file << from << " "<<to<<" " << ind <<" "<< x << " " << s << "\n";
 	file.close();
 }
 
