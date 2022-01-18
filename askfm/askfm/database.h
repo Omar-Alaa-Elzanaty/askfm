@@ -19,8 +19,9 @@ protected:
 	vector<dq>an;
 	data obj;
 	dq ob;
-	int d;
+	int d, mxin;
 public:
+	database();
 	void dataupload(string, string, int, string, bool, int);
 	void datadownload();
 	int checklogin(string user,int pass);
@@ -32,6 +33,7 @@ public:
 	void questiondownload();
 	void questionupload();
 	void answerupload();
+	int recent();
 	int ID();
 	void note();
 };

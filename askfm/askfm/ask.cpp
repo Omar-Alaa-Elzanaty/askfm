@@ -10,7 +10,6 @@ ask::ask()
 }
 ask::ask(string x, int i, string y, string k, bool o) :username(x), password(i), name(y), email(k), anonymous(o) {};
 int ask::id = 0;
-int ask::in_id = 0;
 void ask::start()
 {
 	cout << "Menu:" << endl;
@@ -28,6 +27,7 @@ bool ask::login()
 	if (recent_id) {
 		questiondownload();
 		answerdownload();
+		in_id = database::recent();
 		return true;
 	}
 	cout << "couldn't find this account " << endl;
@@ -133,6 +133,7 @@ const void ask::print_from_me()//questions i send and if some
 {
 	/*for (int i = 0; i < que.size(); i++)cout << que[i].to << " "; cout << endl;
 	for (int i = 0; i < an.size(); i++)cout << an[i].from << " ";*/
+	bool ok = true;
 	for (int i = 0; i < que.size(); i++) {
 		if (que[i].from == recent_id) {
 			cout << "Question Id (" << que[i].in_id << ") from user id(" << que[i].from << ")\n";
@@ -144,8 +145,10 @@ const void ask::print_from_me()//questions i send and if some
 				}
 			}
 			cout << "Answer: NO Answer yet" <<endl;
+			ok = 0;
 		}
 	}
+	if (ok)cout << "you didn't send any Questions." << endl;
 }
 
 const void ask::print_to_me()
@@ -185,13 +188,12 @@ void ask::Delete()
 {
 	int x;
 	cout << "Enter number of the question: "; cin >> x;
-	bool ok = true;
+	bool ok = false;
 	int i = 0;
 	for (; i < que.size(); i++) {
-		if (que[i].in_id == x) {
-			if (que[i].to != recent_id)
-				ok = 0;
-			break;
+		if (que[i].in_id == x&& que[i].to != recent_id) {
+				ok = 1;
+				break;
 		}
 	}
 	if (ok) {
@@ -204,7 +206,7 @@ void ask::Delete()
 			}
 		}
 	}
-	else cout << "You can't delete this question or may be this number is not found" << endl;
+	else cout << "You can't delete this question or may be this question is not found" << endl;
 }
 
 void ask::feed()

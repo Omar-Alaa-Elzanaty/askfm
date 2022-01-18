@@ -3,6 +3,9 @@
 #define longlong ll
 #define endl "\n"
 using namespace std;
+database::database()
+{
+}
 
 void database::dataupload(string username, string name, int pass, string email, bool an, int d) {
 	ofstream file("database.txt", ios::out|ios::app);
@@ -13,7 +16,7 @@ void database::dataupload(string username, string name, int pass, string email, 
 	}//need expetion handle for anonymous as insert 1 or two only (in plan of work)
 	else cout << "fail upload";
 }
-void database::datadownload() {
+void database::datadownload(){
 	int i = 0;
 	ifstream file("database.txt",ios::in);
 	if (file.fail()) {
@@ -97,6 +100,8 @@ void database::questiondownload()
 	while (file >> ob.from >>ob.to>>ob.in_id>>ob.ano,getline(file, ob.s)) {
 	//	cout << ob.id << " " << ob.in_id << " " << ob.s << endl;
 		que.push_back(ob);
+		mxin = max(mxin, ob.in_id);
+		recent();
 	}
 	//for (int i = 0; i < que.size();i++)cout << que[i].from<<" "<<que[i].in_id<<" "<<que[i].s << endl;
 	file.close();
@@ -126,6 +131,13 @@ void database::answerupload()
 	for (int i = 0; i < an.size(); i++) {
 		file << an[i].from << " " << an[i].to << " " << an[i].in_id << " " << an[i].s << "\n";
 	}
+}
+
+int database::recent()
+{
+	if (mxin == -1)
+		return 1;
+	return mxin+1;
 }
 
 void database::answerupload(int x,int z,int y,string s,bool ok)

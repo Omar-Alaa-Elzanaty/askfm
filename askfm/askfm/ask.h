@@ -8,8 +8,8 @@ private:
 	int password,recent_id;
 	string name, email,username;
 	bool anonymous;
-	static int id,in_id;
-	int identifi;
+	static int id;
+	int identifi, in_id;
 public:
 	ask();
 	ask(string,int, string,string,bool);
