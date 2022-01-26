@@ -31,7 +31,7 @@ steps Like ask question except that you will chose *Answer Question*.
 
 - password consist from digits only (int) 
 
-## I will pleasure if you do that:
+## I will be thankful to U if you do that:
 1. you can tell me what precent of using opp in the project.
 2. tell me about any bugs that may be face you during testing .
 3. suggest features with some hint to do it(prefered).
